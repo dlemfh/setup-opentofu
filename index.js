@@ -4,8 +4,11 @@
  */
 
 const core = require('@actions/core');
+const { setGlobalDispatcher, EnvHttpProxyAgent } = require('undici');
 
 const setup = require('./lib/setup-tofu');
+
+setGlobalDispatcher(new EnvHttpProxyAgent());
 
 (async () => {
   try {
